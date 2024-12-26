@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DecorationInfo" load_steps=4 format=3 uid="uid://b8pddfux6j1oy"]
+
+[ext_resource type="Script" path="res://Util/Classes/decoration_info.gd" id="1_qkqwq"]
+
+[sub_resource type="Gradient" id="Gradient_bgxsi"]
+offsets = PackedFloat32Array(0, 0.26776, 1)
+colors = PackedColorArray(0.54902, 0, 0, 1, 0.903598, 0.903598, 0.903598, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ox057"]
+gradient = SubResource("Gradient_bgxsi")
+fill_to = Vector2(0.0598291, 0.0769231)
+repeat = 2
+
+[resource]
+script = ExtResource("1_qkqwq")
+name = "Candy Cane"
+texture = SubResource("GradientTexture2D_ox057")

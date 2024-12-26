@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://bijwkbh0wth4j"]
+[gd_scene load_steps=3 format=3 uid="uid://bijwkbh0wth4j"]
+
+[ext_resource type="PackedScene" uid="uid://dxwwkypmyimqv" path="res://Objects/Scenes/decoration.tscn" id="1_cl8wi"]
+[ext_resource type="Resource" uid="uid://b8pddfux6j1oy" path="res://Resources/Decorations/candy_cane.tres" id="2_yihbi"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Decoration" parent="." instance=ExtResource("1_cl8wi")]
+position = Vector2(325, 141)
+
+[node name="Decoration2" parent="." instance=ExtResource("1_cl8wi")]
+position = Vector2(93, 146)
+decoration_info = ExtResource("2_yihbi")
