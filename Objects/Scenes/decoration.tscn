@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxwwkypmyimqv"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/decoration.gd" id="1_6dj7a"]
+[ext_resource type="Resource" uid="uid://hl6k4xercyag" path="res://Resources/Decorations/bauble.tres" id="2_woxl8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qj83g"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxf8o"]
+size = Vector2(64, 64)
+
+[node name="Decoration" type="StaticBody2D" groups=["clickable"]]
+input_pickable = true
+script = ExtResource("1_6dj7a")
+decoration_info = ExtResource("2_woxl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_qj83g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_dxf8o")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
