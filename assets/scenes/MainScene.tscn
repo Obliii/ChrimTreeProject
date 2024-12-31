@@ -1,13 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://bijwkbh0wth4j"]
+[gd_scene load_steps=7 format=3 uid="uid://bijwkbh0wth4j"]
 
-[ext_resource type="PackedScene" uid="uid://dxwwkypmyimqv" path="res://Objects/Scenes/decoration.tscn" id="1_cl8wi"]
-[ext_resource type="Resource" uid="uid://b8pddfux6j1oy" path="res://Resources/Decorations/candy_cane.tres" id="2_yihbi"]
+[ext_resource type="Script" path="res://assets/scenes/game_instance.gd" id="1_mlnpg"]
+[ext_resource type="Script" path="res://scripts/state/WorldStates/MainWorldState.gd" id="2_fcngs"]
+[ext_resource type="Script" path="res://scripts/state/WorldStates/MainMenuState.gd" id="2_j3h75"]
+[ext_resource type="PackedScene" uid="uid://ftgd76mcumt3" path="res://assets/scenes/MainMenu.tscn" id="2_yj2js"]
+[ext_resource type="Script" path="res://scripts/state/WorldStates/PauseMenuState.gd" id="4_nxod7"]
+[ext_resource type="PackedScene" uid="uid://fsivwtv314cl" path="res://assets/scenes/PauseMenu.tscn" id="6_b3ngc"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_start_scene", "_main_scene", "_pause_scene")]
+script = ExtResource("1_mlnpg")
+_start_scene = NodePath("GameStates/StartingState")
+_main_scene = NodePath("GameStates/MainState")
+_pause_scene = NodePath("GameStates/PauseState")
 
-[node name="Decoration" parent="." instance=ExtResource("1_cl8wi")]
-position = Vector2(325, 141)
+[node name="GameStates" type="Node" parent="."]
 
-[node name="Decoration2" parent="." instance=ExtResource("1_cl8wi")]
-position = Vector2(93, 146)
-decoration_info = ExtResource("2_yihbi")
+[node name="StartingState" type="Node" parent="GameStates" node_paths=PackedStringArray("start_ui")]
+script = ExtResource("2_j3h75")
+start_ui = NodePath("../../Ui Elements/MainMenu")
+
+[node name="MainState" type="Node" parent="GameStates" node_paths=PackedStringArray("main_game")]
+script = ExtResource("2_fcngs")
+main_game = NodePath("../../MainScene")
+
+[node name="PauseState" type="Node" parent="GameStates" node_paths=PackedStringArray("menu")]
+script = ExtResource("4_nxod7")
+menu = NodePath("../../Ui Elements/PauseMenu")
+
+[node name="MainScene" type="Node2D" parent="."]
+visible = false
+
+[node name="Ui Elements" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="MainMenu" parent="Ui Elements" instance=ExtResource("2_yj2js")]
+visible = false
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="PauseMenu" parent="Ui Elements" instance=ExtResource("6_b3ngc")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 10
+bus = &"Sound"
