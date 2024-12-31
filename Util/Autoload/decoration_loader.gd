@@ -2,15 +2,16 @@ extends Node2D
 
 var decoration_scene: PackedScene = preload("res://Objects/Scenes/decoration.tscn")
 
-var decoration_info: Array[DecorationInfo]
+static var decoration_info: Array[DecorationInfo] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var decoration_files: PackedStringArray = DirAccess.get_files_at("res://Resources/Decorations")
-	for decoration in decoration_files:
-		decoration_info.push_back(load("res://Resources/Decorations/" + decoration))
+	for decoration in DirAccess.get_files_at("res://Resources/Decorations"):
+		var decoration_filename = "res://Resources/Decorations/" + decoration.trim_suffix('.remap')
+		var loaded_decoration: DecorationInfo = load(decoration_filename) as DecorationInfo
+		decoration_info.append(loaded_decoration)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spawn_decoration"):
 		if(decoration_info.size):
 			spawn_decoration(decoration_info.pick_random())

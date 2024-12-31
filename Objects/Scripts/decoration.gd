@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		
 	# Keep it moving
 	if dragging and Input.is_action_pressed("click"):
-		global_position = get_global_mouse_position() - offset
+		global_position = global_position.lerp(get_global_mouse_position() - offset, 25 * delta)
 	# and finished!
 	elif Input.is_action_just_released("click"):
 		dragging = false
