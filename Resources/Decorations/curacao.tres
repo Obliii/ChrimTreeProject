@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DecorationInfo" load_steps=4 format=3 uid="uid://cdunyifsqjve7"]
+
+[ext_resource type="Script" path="res://Util/Classes/decoration_info.gd" id="1_suk03"]
+
+[sub_resource type="Gradient" id="Gradient_se682"]
+colors = PackedColorArray(1, 1, 1, 1, 0.27451, 0.74902, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2alnu"]
+gradient = SubResource("Gradient_se682")
+fill_from = Vector2(0.290598, 0.820513)
+fill_to = Vector2(0.816239, 0.299145)
+
+[resource]
+script = ExtResource("1_suk03")
+name = "Curacao"
+texture = SubResource("GradientTexture2D_2alnu")
