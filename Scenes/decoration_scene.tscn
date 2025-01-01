@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyexxbuodq2w"]
 
-[ext_resource type="PackedScene" uid="uid://bpk7tugnv82h8" path="res://Objects/Scenes/decoration_menu.tscn" id="1_vl1ey"]
+[ext_resource type="PackedScene" uid="uid://cbqsvbbbl10bq" path="res://Objects/Scenes/decoration_menu.tscn" id="1_vl1ey"]
 [ext_resource type="PackedScene" uid="uid://dxwwkypmyimqv" path="res://Objects/Scenes/decoration.tscn" id="2_6amu3"]
 [ext_resource type="Resource" uid="uid://b8pddfux6j1oy" path="res://Resources/Decorations/candy_cane.tres" id="3_krofv"]
-[ext_resource type="Script" path="res://Objects/Scripts/decoration_selector.gd" id="4_pvr2x"]
+[ext_resource type="Script" path="res://Objects/Scripts/decoration_manager.gd" id="4_pvr2x"]
 
 [node name="DecorationScene" type="Node2D"]
 
@@ -12,15 +12,16 @@ layer = -1
 
 [node name="DecorationMenu" parent="DecorationUI" instance=ExtResource("1_vl1ey")]
 unique_name_in_owner = true
+mouse_filter = 1
 
-[node name="Decoration" parent="." instance=ExtResource("2_6amu3")]
-position = Vector2(761, 238)
+[node name="DecorationManager" type="Node2D" parent="."]
+script = ExtResource("4_pvr2x")
 
-[node name="Decoration2" parent="." instance=ExtResource("2_6amu3")]
+[node name="Decoration2" parent="DecorationManager" instance=ExtResource("2_6amu3")]
 position = Vector2(93, 146)
 decoration_info = ExtResource("3_krofv")
 
-[node name="DecorationSelector" type="Node2D" parent="."]
-script = ExtResource("4_pvr2x")
+[node name="Decoration" parent="DecorationManager" instance=ExtResource("2_6amu3")]
+position = Vector2(284, 172)
 
-[connection signal="decoration_created" from="DecorationUI/DecorationMenu" to="DecorationSelector" method="_on_decoration_menu_decoration_created"]
+[connection signal="decoration_created" from="DecorationUI/DecorationMenu" to="DecorationManager" method="_on_decoration_menu_decoration_created"]

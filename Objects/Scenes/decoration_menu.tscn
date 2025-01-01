@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpk7tugnv82h8"]
+[gd_scene load_steps=4 format=3 uid="uid://cbqsvbbbl10bq"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/decoration_menu.gd" id="1_fw27a"]
-[ext_resource type="PackedScene" uid="uid://cid77gmg01m5s" path="res://Objects/Scenes/decoration_menu_item.tscn" id="2_b16na"]
+[ext_resource type="PackedScene" uid="uid://dgeefsn7s7e5a" path="res://Objects/Scenes/decoration_menu_item.tscn" id="2_b16na"]
 [ext_resource type="PackedScene" uid="uid://dxwwkypmyimqv" path="res://Objects/Scenes/decoration.tscn" id="3_i870r"]
 
 [node name="DecorationMenu" type="PanelContainer"]
@@ -18,32 +18,51 @@ decoration_menu_item_scene = ExtResource("2_b16na")
 decoration_item_scene = ExtResource("3_i870r")
 metadata/_edit_group_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Selection" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Selection"]
 layout_mode = 2
 text = "Decorations"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Selection"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Selection"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Selection/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="DecorationGrid" type="GridContainer" parent="ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="DecorationGrid" type="GridContainer" parent="Selection/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 2
+
+[node name="Cancel" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Cancel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_right = 70
+
+[node name="Button" type="Button" parent="Cancel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "CANCEL"
+
+[connection signal="pressed" from="Cancel/MarginContainer/Button" to="." method="_on_button_pressed"]

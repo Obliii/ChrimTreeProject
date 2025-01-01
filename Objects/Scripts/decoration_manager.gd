@@ -1,12 +1,14 @@
-class_name DecorationSelector
+class_name DecorationManager
 extends Node2D
 
 @onready var decoration_menu: DecorationMenu = %DecorationMenu
 
+var selected_decoration: Decoration
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if !selected_decoration:
+		return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,10 +17,15 @@ func _process(delta: float) -> void:
 
 
 func _on_decoration_menu_decoration_created(decoration: Decoration) -> void:
-	get_parent().add_child(decoration)
+	add_child(decoration)
 	decoration.global_position = get_global_mouse_position()
-	
 
+func clear_all_decorations() -> void:
+	selected_decoration = null
+	decoration_menu.deselect_menu_items()
+	
+	for decoration: Decoration in get_children():
+		decoration.queue_free()
 
 # Selecting Decorations
 # I'd like to only have one decoration selectable / holdable
