@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bijwkbh0wth4j"]
+[gd_scene load_steps=8 format=3 uid="uid://bijwkbh0wth4j"]
 
 [ext_resource type="Script" path="res://assets/scenes/game_instance.gd" id="1_mlnpg"]
 [ext_resource type="Script" path="res://scripts/state/WorldStates/MainWorldState.gd" id="2_fcngs"]
 [ext_resource type="Script" path="res://scripts/state/WorldStates/MainMenuState.gd" id="2_j3h75"]
 [ext_resource type="PackedScene" uid="uid://ftgd76mcumt3" path="res://assets/scenes/MainMenu.tscn" id="2_yj2js"]
 [ext_resource type="Script" path="res://scripts/state/WorldStates/PauseMenuState.gd" id="4_nxod7"]
+[ext_resource type="PackedScene" uid="uid://cw0jds0thcwgi" path="res://assets/scenes/MainGame.tscn" id="5_hqwmt"]
 [ext_resource type="PackedScene" uid="uid://fsivwtv314cl" path="res://assets/scenes/PauseMenu.tscn" id="6_b3ngc"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_start_scene", "_main_scene", "_pause_scene")]
@@ -21,7 +22,7 @@ start_ui = NodePath("../../Ui Elements/MainMenu")
 
 [node name="MainState" type="Node" parent="GameStates" node_paths=PackedStringArray("main_game")]
 script = ExtResource("2_fcngs")
-main_game = NodePath("../../MainScene")
+main_game = NodePath("../../Ui Elements/MainWorld")
 
 [node name="PauseState" type="Node" parent="GameStates" node_paths=PackedStringArray("menu")]
 script = ExtResource("4_nxod7")
@@ -33,6 +34,9 @@ visible = false
 [node name="Ui Elements" type="CanvasLayer" parent="."]
 layer = 0
 follow_viewport_enabled = true
+
+[node name="MainWorld" parent="Ui Elements" instance=ExtResource("5_hqwmt")]
+visible = false
 
 [node name="MainMenu" parent="Ui Elements" instance=ExtResource("2_yj2js")]
 visible = false

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw0jds0thcwgi"]
+
+[ext_resource type="Texture2D" uid="uid://bi5aku0iv8xe3" path="res://assets/art/ui/CoderTree.png" id="1_con20"]
+
+[node name="MainWorld" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_con20")
+expand_mode = 1
+stretch_mode = 4
