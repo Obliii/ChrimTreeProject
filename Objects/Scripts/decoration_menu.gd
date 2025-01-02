@@ -11,8 +11,6 @@ var selected_menu_item: DecorationMenuItem
 signal decoration_created(decoration: Decoration)
 signal item_deselected()
 
-signal cancel_pressed()
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var spawned_menu_item: DecorationMenuItem
@@ -45,10 +43,6 @@ func deselect_menu_items() -> void:
 func spawn_decoration(decoration_info: DecorationInfo) -> void:
 	var spawned_decoration: Decoration = decoration_item_scene.instantiate()
 	spawned_decoration.decoration_info = decoration_info
+	spawned_decoration.dragging = true
 	decoration_created.emit(spawned_decoration)
 	pass
-	
-
-
-func _on_button_pressed() -> void:
-	cancel_pressed.emit()

@@ -42,10 +42,6 @@ folder_colors={
 "res://Util/": "gray"
 }
 
-[global_group]
-
-clickable="All clickable elements"
-
 [input]
 
 click={

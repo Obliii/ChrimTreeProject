@@ -2,8 +2,13 @@ class_name Decoration
 extends StaticBody2D
 
 @export var decoration_info: DecorationInfo
+@export var decoration_manager: DecorationManager
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = %Sprite2D
+@onready var selected_ui: NinePatchRect = %SelectedUI
+
+
+
 
 var draggable: bool = false
 var dragging: bool = false
@@ -18,12 +23,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# No need to process if we're not dragging this decoration
-	if !draggable:
+	if !dragging:
 		return
 	
 	# We're dragging and record the offset	
 	if Input.is_action_just_pressed("click"):
-		dragging = true
 		offset = get_global_mouse_position() - global_position
 		get_parent().move_child(self, -1)
 		
@@ -33,17 +37,29 @@ func _process(delta: float) -> void:
 	# and finished!
 	elif Input.is_action_just_released("click"):
 		dragging = false
-	
 
-func _on_mouse_entered() -> void:
-	draggable = true
-	scale = Vector2(1.05, 1.05)
+func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if (Input.is_action_just_pressed("click")):
+		viewport.set_input_as_handled()
+		dragging = true
+		decoration_manager.select(self)
+	if (Input.is_action_just_released("click")):
+		dragging = false
+	pass # Replace with function body.
 
-func _on_mouse_exited() -> void:
-	if !dragging:
-		draggable = false
-		scale = Vector2(1, 1)
+
 		
 # Current issues
 # - Overlapping Draggables can be selected at the same time
 #		Have an array of decorations that are on screen, 
+
+func select() -> void:
+	selected_ui.show()
+	# Activate draggable functionality
+	# see the decoration_manager
+
+func deselect() -> void:
+	selected_ui.hide()
+	dragging = false
+	# Deactivate draggable functionality
+	# see the decoration_manager

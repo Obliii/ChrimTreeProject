@@ -17,11 +17,14 @@ mouse_filter = 1
 [node name="DecorationManager" type="Node2D" parent="."]
 script = ExtResource("4_pvr2x")
 
-[node name="Decoration2" parent="DecorationManager" instance=ExtResource("2_6amu3")]
+[node name="Decoration2" parent="DecorationManager" node_paths=PackedStringArray("decoration_manager") instance=ExtResource("2_6amu3")]
 position = Vector2(93, 146)
 decoration_info = ExtResource("3_krofv")
+decoration_manager = NodePath("..")
 
-[node name="Decoration" parent="DecorationManager" instance=ExtResource("2_6amu3")]
+[node name="Decoration" parent="DecorationManager" node_paths=PackedStringArray("decoration_manager") instance=ExtResource("2_6amu3")]
 position = Vector2(284, 172)
+decoration_manager = NodePath("..")
 
+[connection signal="cancel_pressed" from="DecorationUI/DecorationMenu" to="DecorationManager" method="_on_decoration_menu_cancel_pressed"]
 [connection signal="decoration_created" from="DecorationUI/DecorationMenu" to="DecorationManager" method="_on_decoration_menu_decoration_created"]
