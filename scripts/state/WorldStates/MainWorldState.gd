@@ -1,7 +1,7 @@
 class_name MainWorldState
 extends State
 
-@export var main_game: Node2D
+@export var main_game: Control
 
 func _enter_state():
 	main_game.visible = true

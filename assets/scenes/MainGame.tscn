@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw0jds0thcwgi"]
+
+[ext_resource type="Texture2D" uid="uid://bi5aku0iv8xe3" path="res://assets/art/ui/CoderTree.png" id="1_con20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw04w"]
+size = Vector2(977, 52)
+
+[node name="MainWorld" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_con20")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="InteractableAreaTree" type="Area2D" parent="PanelContainer/TextureRect"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PanelContainer/TextureRect/InteractableAreaTree"]
+position = Vector2(364, 538)
+polygon = PackedVector2Array(-3, -3, 66, -74, 68, -178, -15, -120, -36, -165, -161, -140, -166, -174, -127, -233, -158, -267, -108, -339, -135, -370, 16, -493, 188, -480, 219, -458, 359, -427, 364, -378, 297, -366, 392, -321, 311, -283, 341, -241, 312, -207, 233, -205, 261, -161, 219, -158, 160, -163, 124, -143, 145, -51, 191, 2)
+
+[node name="InteractableAreaLights" type="Area2D" parent="PanelContainer/TextureRect"]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="PanelContainer/TextureRect/InteractableAreaLights"]
+position = Vector2(476.5, 104)
+shape = SubResource("RectangleShape2D_bw04w")
