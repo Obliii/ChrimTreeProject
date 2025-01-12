@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyexxbuodq2w"]
+
+[ext_resource type="Texture2D" uid="uid://bi5aku0iv8xe3" path="res://assets/art/ui/CoderTree.png" id="1_bdskf"]
+[ext_resource type="PackedScene" uid="uid://cbqsvbbbl10bq" path="res://Objects/Scenes/decoration_menu.tscn" id="1_vl1ey"]
+[ext_resource type="Script" path="res://Objects/Scripts/decoration_manager.gd" id="4_pvr2x"]
+
+[node name="DecorationScene" type="Node2D"]
+
+[node name="DecorationUI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="DecorationUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_bdskf")
+expand_mode = 3
+
+[node name="DecorationMenu" parent="DecorationUI" instance=ExtResource("1_vl1ey")]
+unique_name_in_owner = true
+mouse_filter = 1
+
+[node name="DecorationManager" type="Node2D" parent="."]
+script = ExtResource("4_pvr2x")
+
+[connection signal="decoration_created" from="DecorationUI/DecorationMenu" to="DecorationManager" method="_on_decoration_menu_decoration_created"]

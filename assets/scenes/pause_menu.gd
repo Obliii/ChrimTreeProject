@@ -3,6 +3,7 @@ extends Control
 @onready var continue_button = $PanelContainer/VBoxContainer/ContinueButton
 @onready var screenshot_button = $PanelContainer/VBoxContainer/ScreenshotButton
 @onready var restart_button = $PanelContainer/VBoxContainer/RestartButton
+@onready var exit_button = $PanelContainer/VBoxContainer/ExitButton
 
 func _on_continue_button_pressed() -> void:
 	Main._enter_new_game_state(Main.main_state)
@@ -16,3 +17,6 @@ func _on_screenshot_button_pressed() -> void:
 	
 func _on_restart_button_pressed() -> void:
 	Main.reset_main_scene()
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

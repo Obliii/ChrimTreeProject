@@ -14,6 +14,7 @@ var current_state: Selection = Selection.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Main.decoration_manager = self
 	if !selected_decoration:
 		return
 

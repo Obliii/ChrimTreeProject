@@ -39,20 +39,32 @@ scroll_active = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 text = "Continue"
 
 [node name="ScreenshotButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 text = "Take Screenshot"
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 text = "Recreate Tree!"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "Exit Game"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ScreenshotButton" to="." method="_on_screenshot_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -11,6 +11,7 @@ const MAXIMUM_OBJECTS = 500
 @onready var main_camera: Camera2D
 @onready var music_player: AudioStreamPlayer2D
 @onready var sound_player: AudioStreamPlayer2D
+@onready var decoration_manager: DecorationManager
 
 # States
 @onready var main_state = $GameStates/MainWorldState
@@ -20,6 +21,10 @@ const MAXIMUM_OBJECTS = 500
 
 var game_started: bool = false
 signal new_state_entered(new_state)
+
+func reset_main_scene():
+	decoration_manager.clear_all_decorations()
+	_enter_new_game_state(main_state)
 
 func _enter_new_game_state(new_state):
 	# If the state is already there, don't process further.

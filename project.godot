@@ -37,7 +37,6 @@ folder_colors={
 "res://Art/": "purple",
 "res://Objects/": "orange",
 "res://Resources/": "teal",
-"res://Scenes/": "green",
 "res://UI/": "pink",
 "res://Util/": "gray"
 }

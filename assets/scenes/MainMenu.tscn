@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ftgd76mcumt3"]
+[gd_scene load_steps=3 format=3 uid="uid://ftgd76mcumt3"]
 
 [ext_resource type="Script" path="res://assets/scenes/start_menu.gd" id="1_vtcln"]
+[ext_resource type="Script" path="res://assets/scenes/random_start_menu.gd" id="2_e0jrl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,10 +12,16 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("1_vtcln")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0.470588, 1)
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +29,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="StartText" type="RichTextLabel" parent="PanelContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_default_cursor_shape = 16
+bbcode_enabled = true
+text = "This is not supposed to happen."
+fit_content = true
+script = ExtResource("2_e0jrl")
+start_text = Array[String](["[center][rainbow][tornado]Now with 100% more protogen![/tornado]", "[center][tornado]Vixx! Hi![/tornado]", "[center]Made with love![/center]", "[center]I'm terrible at making games. At least Funce is here.[/center]", "[center][pulse]Skibidi toilet[/pulse][/center]", "[center]\"If ... is flat, and has no cake. ... mother, you shall take.[/center]", "[center]MY MOM![/center]", "[center]Hi Friends.[/center]", "[center]How doy uo make a resource again[/center]", "[center]:D[/center]", "[center]\"A good quote?\" -J Wasp[/center]", "[center]\"im so innocentt\" -K Zel[/center]", "[tornado]GUP![/tornado]", "[center]FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH FISH[/center]", "[rainbow]Quick brown fox over the silver lzazy duk - B rk[/rainbow]"])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -36,21 +55,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 bbcode_enabled = true
-text = "[center][rainbow][tornado]Funce World[/tornado]"
+text = "[center][rainbow][tornado]AWESOME CHRISTMAS TREE GAME!!!![/tornado]"
 fit_content = true
 
 [node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 4
+mouse_default_cursor_shape = 2
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 5
+mouse_default_cursor_shape = 2
 text = "Settings"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
